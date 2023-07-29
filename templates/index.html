@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Session</title>
+</head>
+<body>
+    <form method="POST">
+        <input type="text" name="produto" placeholder="Nome do produto">
+        <input type="number" name="quantidade" placeholder="Quantidade em kg" step="0.01">
+        <input type="submit" value="Adicionar">
+    </form>
+    <br>
+    <a href="/checkout">Checkout</a>
+
+    <p>Itens no carrinho</p>
+    {% if session["carrinho"].items() %}
+        <table>
+            <tr>
+                <th>Produtos</th>
+                <th>Quantidade (kg)</th>
+            </tr>
+            {% for item, qntd in session["carrinho"].items() %}
+            <tr>
+                <td>{{ item }}</td>
+                <td>{{ qntd }}</td>
+                <td><a href="remover/{{item}}">Remover</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Carrinho vazio.</p>
+    {% endif %}
+
+</body>
+</html>
