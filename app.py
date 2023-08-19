@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.secret_key = 'lol'
 
 # Configuração da extensão Flask-Session
-app.config['SESSION_TYPE'] = 'filesystem'  # Ou outro método de armazenamento de sessão de sua escolha
+app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
 @app.route("/", methods=['GET', 'POST'])
